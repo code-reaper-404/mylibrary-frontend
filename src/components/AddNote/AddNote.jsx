@@ -41,7 +41,7 @@ const AddNote = ({ children, note, onClose, onSaved }) => {
     try {
       if (note && note._id) {
         // Update flow
-        const res = await updateNote(note._id, form);
+        const res = await updateNote(form,note._id);
         if (res.status !== 200) throw new Error(res.data?.message || "Failed to update note");
 
         toast.success("Note updated successfully!", { autoClose: 1500 });
