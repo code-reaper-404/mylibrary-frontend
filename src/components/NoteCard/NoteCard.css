@@ -6,6 +6,7 @@
   margin: 15px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 /* Paper fold effect on bottom right */

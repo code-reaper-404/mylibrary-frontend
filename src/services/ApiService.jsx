@@ -84,6 +84,16 @@ export const addNote = async (data) => {
   return res;
 };
 
+export const updateNote = async (data,id) => {
+  const res = await apiClient.put(`library/edit-note/${id}`, data);
+  return res;
+};
+
+export const deleteNote = async (id) => {
+  const res = await apiClient.delete(`library/delete-note/${id}`);
+  return res;
+};
+
 export const getHistory = async () => {
   const res = await apiClient.get("history/");
   return res;
