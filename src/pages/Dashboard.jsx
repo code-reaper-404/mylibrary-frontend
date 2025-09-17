@@ -7,9 +7,11 @@ import { MdAttachMoney, MdBookmarkAdded, MdLibraryAdd } from 'react-icons/md';
 import { RiBookMarkedFill, RiBookMarkedLine } from 'react-icons/ri';
 import { FaNoteSticky, FaStar } from 'react-icons/fa6';
 import { dashBoardData } from '../services/ApiService';
+import Loader from '../components/Loader/Loader';
 
 const Dashboard = () => {
-  const [DashBoardCount, setDashBoardCount] = useState("");
+  const [DashBoardCount, setDashBoardCount] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const fetchDbDataCount = async () => {
     try {
@@ -17,8 +19,10 @@ const Dashboard = () => {
       setDashBoardCount(data.data);
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
+    } finally {
+      setLoading(false); // always stop loader
     }
-  }
+  };
 
   useEffect(() => {
     fetchDbDataCount();
@@ -27,13 +31,11 @@ const Dashboard = () => {
   const defaultColors = ["#2ec4b6", "#ff9f1c", "#f08080", "#a9def9"];
   let colorIndex = 0;
 
-  const bookByGenreData = DashBoardCount?.booksByGenre
-    ? DashBoardCount.booksByGenre.map((item) => ({
-      label: item.name || "Unknown",
-      count: item.count || 0,
-      color: item.color || defaultColors[colorIndex++ % defaultColors.length],
-    }))
-    : [];
+  const bookByGenreData = DashBoardCount?.booksByGenre?.map((item) => ({
+    label: item.name || "Unknown",
+    count: item.count || 0,
+    color: item.color || defaultColors[colorIndex++ % defaultColors.length],
+  })) || [];
 
   const statusLabels = {
     1: "To Read",
@@ -42,24 +44,21 @@ const Dashboard = () => {
     4: "Dropped",
   };
 
-  const bookByRead = DashBoardCount?.booksByStatus
-    ? DashBoardCount.booksByStatus.map((item, index) => ({
-      label: statusLabels[item._id] || "Unknown",
-      count: item.count || 0,
-      color: defaultColors[index % defaultColors.length], // keep colors rotating
-    }))
-    : [];
+  const bookByRead = DashBoardCount?.booksByStatus?.map((item, index) => ({
+    label: statusLabels[item._id] || "Unknown",
+    count: item.count || 0,
+    color: defaultColors[index % defaultColors.length],
+  })) || [];
 
   const languageColors = ["#f08080", "#2ec4b6", "#a9def9"];
 
-  const bookByLanguage = DashBoardCount?.booksByLanguage
-    ? DashBoardCount.booksByLanguage.map((item) => ({
-      label: item._id,
-      count: item.count || 0,
-      color: item.color || languageColors[colorIndex++ % languageColors.length],
-    }))
-    : [];
+  const bookByLanguage = DashBoardCount?.booksByLanguage?.map((item) => ({
+    label: item._id,
+    count: item.count || 0,
+    color: item.color || languageColors[colorIndex++ % languageColors.length],
+  })) || [];
 
+  if (loading) return <Loader />;
 
   return (
     <div className='dashboard'>
@@ -98,7 +97,6 @@ const Dashboard = () => {
         <div className="status-card donut card grid2">
           <DoughnutChart LabelTxt="Books" data={bookByRead} titleTxt="Book by Status" />
         </div>
-
         <div className="status-card donut card grid3">
           <DoughnutChart LabelTxt="Books" data={bookByLanguage} titleTxt="Book by Language" />
         </div>
@@ -107,4 +105,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default Dashboard;

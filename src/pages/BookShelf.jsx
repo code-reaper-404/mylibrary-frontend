@@ -4,10 +4,13 @@ import { bookShelfApi } from '../services/ApiService'
 import DataTile from '../components/DataTile/DataTile';
 import AddBook from '../components/AddBook/AddBook';
 import { Link } from 'react-router-dom';
+import Loader from '../components/Loader/Loader';
 
 const BookShelf = () => {
   const [bookShelf, setBookShelf] = useState([]);
   const [popupVisible, setPopupVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
+
 
   const fetchBookShelf = async () => {
     try {
@@ -15,12 +18,16 @@ const BookShelf = () => {
       setBookShelf(data.data.books);
     } catch (error) {
       console.log("Error fetching bookshelf api: ", error);
+    } finally {
+      setLoading(false); // always stop loader
     }
   };
 
   useEffect(() => {
     fetchBookShelf();
   }, []);
+
+  if (loading) return <Loader color={"#4cc9f0"} />;
 
   return (
     <div className='bookshelf-sec'>

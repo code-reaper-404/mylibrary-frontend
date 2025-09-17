@@ -4,10 +4,14 @@ import { wishlistApi } from '../services/ApiService'
 import DataTile from '../components/DataTile/DataTile';
 import AddBook from '../components/AddBook/AddBook';
 import { Link } from 'react-router-dom';
+import Loader from '../components/Loader/Loader';
+
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   const [popupVisible, setPopupVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
+
 
   const fetchWishlist = async () => {
     try {
@@ -15,12 +19,17 @@ const Wishlist = () => {
       setWishlist(data.data.books);
     } catch (error) {
       console.log("Error fetching wishlist api: ", error);
+    } finally {
+      setLoading(false); // always stop loader
     }
   };
 
   useEffect(() => {
     fetchWishlist();
   }, []);
+
+  if (loading) return <Loader color={"#06d6a0"} />;
+
 
   return (
     <div className='bookshelf-sec'>

@@ -3,10 +3,12 @@ import NoteCard from '../components/NoteCard/NoteCard';
 import { getNotes } from '../services/ApiService';
 import './CSS/Notes.css'
 import AddNote from '../components/AddNote/AddNote';
+import Loader from '../components/Loader/Loader';
 
 const Notes = () => {
   const [popupVisible, setPopupVisible] = useState(false);
   const [noteData, setNoteData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const fetchNotes = async () => {
     try {
@@ -14,12 +16,16 @@ const Notes = () => {
       setNoteData(data.data)
     } catch (error) {
       console.log("error during fetching notes:", error);
+    } finally {
+      setLoading(false); // always stop loader
     }
   }
 
   useEffect(() => {
     fetchNotes();
   }, []);
+
+  if (loading) return <Loader color={"#ffbe0b"}/>;
 
   return (
     <div className='notes-sec'>

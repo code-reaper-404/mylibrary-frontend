@@ -1,15 +1,29 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Loader = () => {
+const Loader = ({ color }) => {
   return (
-    <StyledWrapper>
-      <div className="loader" />
+    <StyledWrapper $color={color}>
+      <div className="loader-overlay">
+        <div className="loader" />
+      </div>
     </StyledWrapper>
   );
 }
 
 const StyledWrapper = styled.div`
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999999; /* stay above everything */
+}
+
   .loader {
     width: 48px;
     height: 48px;
@@ -33,7 +47,7 @@ const StyledWrapper = styled.div`
     content: '';
     width: 100%;
     height: 100%;
-    background: #008996;
+    background: ${(props) => props.$color || "#008996"};
     position: absolute;
     top: 0;
     left: 0;

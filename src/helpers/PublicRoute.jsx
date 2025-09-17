@@ -2,17 +2,16 @@ import React from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./../pages/CSS/Loader.css";
-import BookLoader from "../components/Loader/Loader";
+import Loader from "../components/Loader/Loader";
 
 const PublicRoute = ({ children }) => {
   const { isLoggedIn, loading } = useAuth();
   const location = useLocation();
-  
+
   if (loading) {
     return (
       <div className="loader-container">
-        {/* <div className="spinner"></div> */}
-        <BookLoader />
+        <Loader color={"#f08080"} />
       </div>
     );
   }

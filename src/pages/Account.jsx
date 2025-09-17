@@ -3,6 +3,7 @@ import "./CSS/Account.css";
 import { getUserProfile, updateUser, updatePassword } from "../services/ApiService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from '../components/Loader/Loader';
 
 
 const Account = () => {
@@ -71,9 +72,8 @@ const Account = () => {
     }
   };
 
-  if (loading) {
-    return <p className="loading-text">Loading profile...</p>;
-  }
+   if (loading) return <Loader color={"#9381ff"} />;
+
 
   return (
     <div className="account-container">
