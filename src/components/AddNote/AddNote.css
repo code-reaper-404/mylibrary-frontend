@@ -1,0 +1,39 @@
+.note-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  /* background: #f9f9f9; */
+  border-radius: 12px;
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1; 
+}
+
+
+.error {
+  grid-column: 1 / -1;
+  color: red;
+  font-weight: bold;
+}
+
+.success {
+  grid-column: 1 / -1;
+  color: green;
+  font-weight: bold;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

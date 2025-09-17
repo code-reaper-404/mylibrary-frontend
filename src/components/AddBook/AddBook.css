@@ -1,0 +1,105 @@
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 12px;
+  /* box-sizing: border-box; */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  /* background-color: #f8f8f8; */
+  font-size: 16px;
+  resize: none;
+}
+
+select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+select:focus {
+  border-color: #3498db;
+}
+
+
+
+.book-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsive grid */
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  /* background: #f9f9f9; */
+  border-radius: 12px;
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1; /* description takes full row */
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+input, select, textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+button {
+  grid-column: 1 / -1; /* submit button spans full width */
+  padding: 0.8rem;
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #3730a3;
+}
+
+.error {
+  grid-column: 1 / -1;
+  color: red;
+  font-weight: bold;
+}
+
+.success {
+  grid-column: 1 / -1;
+  color: green;
+  font-weight: bold;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

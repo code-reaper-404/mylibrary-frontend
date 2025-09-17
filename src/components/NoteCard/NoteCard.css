@@ -1,0 +1,48 @@
+.note-card {
+  max-width: 300px;
+  background: #ffca00c4;
+  padding: 20px;
+  border-radius: 0px 0px 15px 0px;
+  margin: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Paper fold effect on bottom right */
+.note-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(135deg, #fff 60%, #ffffff 100%);
+  border-bottom-right-radius: 15px;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  box-shadow: -2px 2px 6px #0002;
+  z-index: 2;
+}
+
+/* Optional: add a subtle shadow for the fold */
+.note-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 35px;
+  height: 35px;
+  border-bottom-right-radius: 15px;
+  box-shadow: -3px -1px 12px #000000c7;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-bookname {
+  font-size: 14px;
+}
