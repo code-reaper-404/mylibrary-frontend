@@ -99,3 +99,11 @@
   margin-top: 8px;
   font-size: 0.95rem;
 }
+
+@media (max-width: 576px) {
+
+  .bookshelf-grid{
+    display: flex;
+    flex-direction: column;
+  }
+}

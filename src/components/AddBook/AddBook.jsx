@@ -3,7 +3,7 @@ import { addBooktoSehlf, getGenre } from '../../services/ApiService';
 import './AddBook.css'
 import { toast } from 'react-toastify';
 
-const AddBook = ({ children, section }) => {
+const AddBookss = ({ children, section }) => {
     const [form, setForm] = useState({
         imageURL: '',
         genre: '',
@@ -185,4 +185,4 @@ const AddBook = ({ children, section }) => {
     )
 }
 
-export default AddBook
+export default AddBookss

@@ -18,7 +18,6 @@ const Account = () => {
   const [isResettingPassword, setIsResettingPassword] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Fetch user profile
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -35,7 +34,6 @@ const Account = () => {
     fetchUser();
   }, []);
 
-  // Handle form changes
   const handleEditChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -44,7 +42,7 @@ const Account = () => {
     setPasswordData({ ...passwordData, [e.target.name]: e.target.value });
   };
 
-  // Save updated user details
+
   const handleSave = async () => {
     try {
       const res = await updateUser(formData);
@@ -56,7 +54,6 @@ const Account = () => {
     }
   };
 
-  // Reset password
   const handlePasswordReset = async () => {
     if (passwordData.newPassword !== passwordData.confirmPassword) {
       toast.error("Passwords do not match!");

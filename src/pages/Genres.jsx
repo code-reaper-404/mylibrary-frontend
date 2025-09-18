@@ -41,7 +41,7 @@ const Genres = () => {
                 </div>
 
             )}
-            <div className="main-grid">
+            <div className="main-grid genres">
                 {
                     genreData && genreData.length > 0 ? (
                         genreData.map((genre) => (
