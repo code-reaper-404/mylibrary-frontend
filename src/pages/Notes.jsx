@@ -56,7 +56,7 @@ const Notes = () => {
       <div className="notes-grid">
         {noteData.length > 0 ? (
           noteData.map((note) => (
-            // wrap the NoteCard so clicking opens edit modal and sets the note
+
             <div
               key={note._id}
               onClick={() => {

@@ -1,6 +1,6 @@
 .add-book-form {
   width: 100%;
-  max-width: 700px;
+  /* max-width: 700px; */
   margin: 0 auto;
   padding: 16px;
   /* height: 100vh; */
@@ -14,7 +14,7 @@
 
 .book-form {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   gap: 16px;
 }
 
@@ -23,9 +23,9 @@
   flex-direction: column;
 }
 
-.form-group.full-width {
+/* .form-group.full-width {
   grid-column: span 2;
-}
+} */
 
 label {
   margin-bottom: 6px;
@@ -50,9 +50,9 @@ textarea {
 }
 
 button {
-  grid-column: span 2;
+  /* grid-column: span 2; */
   padding: 12px;
-  background: #007bff;
+  background: #8e9399;
   color: white;
   border: none;
   border-radius: 8px;
@@ -66,9 +66,9 @@ button:disabled {
   cursor: not-allowed;
 }
 
-button:hover:not(:disabled) {
+/* button:hover:not(:disabled) {
   background: #0056b3;
-}
+} */
 
 .error {
   grid-column: span 2;
@@ -81,27 +81,18 @@ button:hover:not(:disabled) {
   color: green;
   font-size: 14px;
 }
-
+.form-btns.save{
+  background: #00581b;
+}
+.form-btns.save:hover{
+opacity: 0.8;
+}
+.form-btns{
+  margin: 10px;
+}
 /* 📱 Responsive Styles */
 @media (max-width: 768px) {
   .book-form {
-    grid-template-columns: 1fr;
-    /* stack fields */
+    grid-template-columns: 1fr 1fr 1fr;
   }
-
-  .form-group.full-width,
-  button,
-  .error,
-  .success {
-    grid-column: span 1;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  .add-book-form {
-    height: 100vh;
-  }
-
 }

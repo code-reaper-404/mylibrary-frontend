@@ -30,6 +30,7 @@ const Navbar = () => {
           <img src={logo_img} alt="Logo Image" className="nav_logo" />
           <img src={logo_txt} alt="Logo Text" className="nav_logo_txt" />
         </Link>
+        {/* <span>Your personal reading universe</span> */}
       </div>
 
       <div className="nav_menu_sec">

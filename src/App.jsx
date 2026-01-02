@@ -14,6 +14,7 @@ import Genres from "./pages/Genres";
 import BookPage from "./pages/BookPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AddBooks from "./components/AddBook/AddBook";
 
 
 function App() {
@@ -64,6 +65,18 @@ function App() {
         <Route path="/book-shelf" element={
           <PrivateRoute>
             <BookShelf />
+          </PrivateRoute>
+        }
+        />
+        <Route path="/add-book" element={
+          <PrivateRoute>
+            <AddBooks />
+          </PrivateRoute>
+        }
+        />
+        <Route path="/add-book/:id" element={
+          <PrivateRoute>
+            <AddBooks />
           </PrivateRoute>
         }
         />

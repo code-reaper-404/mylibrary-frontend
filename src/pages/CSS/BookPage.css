@@ -9,7 +9,7 @@
   align-items: center;
 }
 
-.book-card {
+.book-card-page {
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -104,7 +104,7 @@
 }
 /* Responsive Layout */
 @media (min-width: 768px) {
-  .book-card {
+  .book-card-page {
     flex-direction: row;
     gap: 2rem;
   }

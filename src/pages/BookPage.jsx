@@ -137,7 +137,7 @@ const BookPage = () => {
             )}
 
             {book ? (
-                <div className="book-card">
+                <div className="book-card-page">
                     <div className="book-image">
                         <img src={book.imageURL || DefaultBook} alt={book.title} />
                     </div>
